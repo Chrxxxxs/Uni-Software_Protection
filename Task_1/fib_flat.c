@@ -10,7 +10,7 @@ unsigned int fib(unsigned n) {
     while (1) {
         switch (state)
         {
-        case 0:
+        case 0:  // Execute main computation
             for (i=2; i<=n; i++) {
                 s=a+b;
                 a=b;
@@ -18,13 +18,13 @@ unsigned int fib(unsigned n) {
             }
             state = 3;
             break;
-        case 1:
+        case 1: // Entry block: check if n == 0 (I hope this was meant by "the entry block of the original function should also be protected")
             if (n == 0) {
                 return 0;
             }
             state = 0;
             break;
-        case 3:
+        case 3: // Return block
             return s;
         }
     }
