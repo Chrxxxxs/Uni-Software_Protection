@@ -90,6 +90,13 @@ unsigned int vm_execute(unsigned char *bytecode, unsigned int param0)
             reg[target_reg] = param0;
             vip += 2;
         }
+        else if (opcode == 0x07) // add immediate instruction
+        {
+            target_reg = bytecode[vip + 1];
+            input1 = bytecode[vip + 2];
+            reg[target_reg] = reg[target_reg] + input1;
+            vip += 3;
+        }
         else
         {
             // invalid opcode, halt execution
@@ -112,14 +119,15 @@ int main(int argc, char **argv)
     unsigned char bytecode[] = {
         0x06, 0x01,
         0x02, 0x03, 0x01,
-        0x00, 0x04, 0x02,
+        0x00, 0x04, 0x03,
         0x03, 0x0E, 0x01, 0x00,
         0x04, 0x00,
         0x02, 0x05, 0x02,
-        0x03, 0x21, 0x05, 0x01,
+        0x03, 0x24, 0x05, 0x01,
         0x01, 0x04, 0x02, 0x03,
         0x00, 0x02, 0x03,
         0x00, 0x03, 0x04,
+        0x07, 0x05, 0x01,
         0x05, 0x11,
         0x00, 0x00, 0x04,
         0x04, 0x00,
