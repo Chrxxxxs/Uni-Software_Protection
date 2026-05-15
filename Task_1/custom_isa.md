@@ -1,5 +1,6 @@
 2.a:
 Register Based ISA
+Each register is 32 bits
 Instructions:
 store (register, data)
 add (target register, input1, input2)
@@ -11,7 +12,6 @@ move_init (target register)
 
 5 Instructions (min. 3-bit)
 16 Register (min. 4-bit)
-input is passed in register 1
 0 is return register
 All registers are initialized to 0 at the start of the program
 ProgramCounter -> vip stored in register 15 in bytes
